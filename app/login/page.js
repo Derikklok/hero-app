@@ -30,7 +30,7 @@ export default function LoginPage() {
     <div className="flex min-h-full flex-col bg-background">
       {/* Nav */}
       <header className="border-b border-border bg-surface/80 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between px-6">
+        <div className="mx-auto flex h-14 max-w-300 items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="flex size-7 items-center justify-center rounded-lg bg-accent text-[11px] font-bold text-accent-foreground shadow-sm">
               L
@@ -52,7 +52,7 @@ export default function LoginPage() {
       </header>
 
       <main className="flex flex-1 items-center justify-center px-4 py-16">
-        <div className="w-full max-w-[400px]">
+        <div className="w-full max-w-100">
           {/* Card */}
           <div className="rounded-2xl border border-border bg-surface p-8 shadow-sm">
             <div className="mb-6">
@@ -174,7 +174,7 @@ export default function LoginPage() {
           </div>
 
           <p className="mt-5 text-center text-[12px] text-muted">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
               href="/register"
               className="font-medium text-accent hover:underline"

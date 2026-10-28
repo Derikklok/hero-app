@@ -83,7 +83,7 @@ export default function RegisterPage() {
     <div className="flex min-h-full flex-col bg-background">
       {/* Nav */}
       <header className="border-b border-border bg-surface/80 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between px-6">
+        <div className="mx-auto flex h-14 max-w-300 items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="flex size-7 items-center justify-center rounded-lg bg-accent text-[11px] font-bold text-accent-foreground shadow-sm">
               L
@@ -105,7 +105,7 @@ export default function RegisterPage() {
       </header>
 
       <main className="flex flex-1 items-center justify-center px-4 py-16">
-        <div className="w-full max-w-[420px]">
+        <div className="w-full max-w-105">
           {/* Trust badges */}
           <div className="mb-6 flex items-center justify-center gap-4 text-[11px] text-muted">
             {["SOC 2 Compliant", "256-bit encryption", "Free 14-day trial"].map(
