@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -27,32 +28,24 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="auth-shell flex min-h-full flex-col bg-background">
-      {/* Nav */}
-      <header className="border-b border-border bg-surface/80 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-300 items-center justify-between px-6">
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex size-7 items-center justify-center rounded-lg bg-accent text-[11px] font-bold text-accent-foreground shadow-sm">
-              L
-            </div>
-            <span className="text-sm font-semibold tracking-tight">
-              Ledgerline
-            </span>
-          </Link>
-          <span className="text-[13px] text-muted">
-            No account?{" "}
-            <Link
-              href="/register"
-              className="font-medium text-accent hover:underline"
-            >
-              Sign up free
-            </Link>
-          </span>
-        </div>
-      </header>
-
-      <main className="flex flex-1 items-center justify-center px-4 py-16">
+    <div className="auth-shell grid h-screen overflow-hidden bg-background md:grid-cols-[minmax(360px,420px)_1fr]">
+      <section className="relative flex h-screen min-h-0 flex-col overflow-hidden border-r border-border bg-surface/95">
+        <main className="flex min-h-full flex-1 items-center justify-center px-6 py-8 sm:px-10">
         <div className="w-full max-w-100">
+          <div className="mb-8 flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-2.5">
+              <div className="flex size-8 items-center justify-center rounded-lg bg-accent text-xs font-bold text-accent-foreground shadow-sm">
+                L
+              </div>
+              <span className="text-sm font-semibold tracking-tight">Ledgerline</span>
+            </Link>
+            <span className="text-right text-[12px] text-muted">
+              No account?{" "}
+              <Link href="/register" className="font-medium text-accent hover:underline">
+                Sign up free
+              </Link>
+            </span>
+          </div>
           {/* Card */}
           <div className="auth-card rounded-2xl border border-border bg-surface p-8 shadow-sm">
             <div className="mb-6">
@@ -184,7 +177,70 @@ export default function LoginPage() {
             </Link>
           </p>
         </div>
-      </main>
+        </main>
+      </section>
+
+      <aside className="relative h-screen min-h-0 overflow-hidden bg-[#071b3a] md:block" aria-label="Ledgerline platform preview">
+        <Image
+          src="/login-image.jpg"
+          alt="Ledgerline workspace on a mobile device"
+          fill
+          priority
+          className="object-cover object-center opacity-55"
+          sizes="(min-width: 1024px) 65vw, 0vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(7,27,58,0.98)_0%,rgba(7,27,58,0.68)_34%,rgba(7,27,58,0.16)_72%,rgba(7,27,58,0.62)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_20%,rgba(83,156,255,0.38),transparent_30%),radial-gradient(circle_at_20%_92%,rgba(19,91,173,0.5),transparent_34%)]" />
+
+        <div className="relative z-10 flex h-screen flex-col justify-between overflow-hidden p-10 xl:p-16">
+          <div className="max-w-xl">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white/85 backdrop-blur">
+              <span className="size-1.5 rounded-full bg-[#7dd3fc] shadow-[0_0_12px_#7dd3fc]" />
+              The command center for modern finance teams
+            </div>
+            <h2 className="max-w-lg text-4xl font-semibold leading-[1.08] tracking-tight text-white xl:text-6xl">
+              Clarity for every
+              <span className="block text-[#8fc9ff]">business decision.</span>
+            </h2>
+            <p className="mt-6 max-w-md text-sm leading-6 text-white/65 xl:text-base">
+              Bring invoices, collections, and revenue intelligence into one calm, connected workspace.
+            </p>
+          </div>
+
+          <div className="relative mx-auto mt-12 h-97.5 w-full max-w-162.5 xl:h-117.5">
+            <div className="absolute left-[8%] top-[8%] h-[82%] w-[48%] rotate-[-7deg] overflow-hidden rounded-[2rem] border border-white/30 bg-white/10 shadow-2xl shadow-black/40 backdrop-blur-sm">
+              <Image
+                src="/login-image-2.jpg"
+                alt="Ledgerline analytics preview"
+                fill
+                className="object-cover object-top"
+                sizes="(min-width: 1280px) 300px, 240px"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-[#071b3a]/55 via-transparent to-white/10" />
+            </div>
+            <div className="absolute bottom-0 right-[4%] h-[92%] w-[46%] rotate-[7deg] overflow-hidden rounded-[2rem] border border-white/40 bg-white/10 shadow-2xl shadow-black/50 backdrop-blur-sm">
+              <Image
+                src="/login-image.jpg"
+                alt="Ledgerline invoice overview"
+                fill
+                className="object-cover object-top"
+                sizes="(min-width: 1280px) 300px, 240px"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-[#071b3a]/50 via-transparent to-white/10" />
+            </div>
+            <div className="absolute bottom-[9%] left-[5%] z-10 rounded-2xl border border-white/20 bg-[#0b2b5b]/85 px-4 py-3 text-white shadow-xl backdrop-blur-md">
+              <p className="text-[10px] uppercase tracking-[0.18em] text-white/55">Collection rate</p>
+              <p className="mt-1 text-xl font-semibold">98.6%</p>
+              <p className="mt-0.5 text-[10px] text-[#8fc9ff]">↑ 4.2% this quarter</p>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between gap-6 border-t border-white/15 pt-5 text-[11px] text-white/50">
+            <span>Trusted by finance teams that scale</span>
+            <span className="hidden sm:inline">SOC 2 · SSO ready · Audit trails</span>
+          </div>
+        </div>
+      </aside>
     </div>
   );
 }

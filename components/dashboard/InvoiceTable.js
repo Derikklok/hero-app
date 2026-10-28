@@ -125,7 +125,7 @@ export default function InvoiceTable() {
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[760px] border-collapse text-[13px] tabular-nums">
+        <table className="w-full min-w-190 border-collapse text-[13px] tabular-nums">
           <thead className="bg-surface-secondary text-[11px] font-medium uppercase tracking-wider text-muted">
             <tr>
               <th className="w-10 py-2.5 pl-4 text-left">
@@ -170,7 +170,7 @@ export default function InvoiceTable() {
                   />
                 </td>
                 <td className="px-3 py-2.5 font-semibold text-accent">{r.id}</td>
-                <td className="max-w-[180px] truncate px-3 py-2.5 font-medium">{r.client}</td>
+                <td className="max-w-45 truncate px-3 py-2.5 font-medium">{r.client}</td>
                 <td className="hidden px-3 py-2.5 text-muted xl:table-cell">{r.issued}</td>
                 <td className={`px-3 py-2.5 ${r.status === "Overdue" ? "font-medium text-danger" : "text-muted"}`}>
                   {r.due}

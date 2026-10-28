@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
+import Image from "next/image";
 
 const DocumentPreview = forwardRef(function DocumentPreview(
   { doc, type, fmt, subtotal, totalTax, discountAmt, total },
@@ -18,7 +19,7 @@ const DocumentPreview = forwardRef(function DocumentPreview(
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 36 }}>
         <div>
           {doc.logo
-            ? <img src={doc.logo} alt="Logo" style={{ height: 48, marginBottom: 12, objectFit: "contain" }} />
+            ? <Image src={doc.logo} alt="Logo" width={240} height={48} unoptimized style={{ width: "auto", height: 48, marginBottom: 12, objectFit: "contain" }} />
             : (
               <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 40, height: 40, borderRadius: 10, background: accent, color: "#fff", fontWeight: 700, fontSize: 16, marginBottom: 12 }}>
                 L

@@ -1,381 +1,157 @@
+import Image from "next/image";
 import Link from "next/link";
 
-const features = [
-  {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="2" y="5" width="20" height="14" rx="2" />
-        <line x1="2" y1="10" x2="22" y2="10" />
-      </svg>
-    ),
-    title: "Smart Invoicing",
-    desc: "Create, send, and track invoices in seconds. Automated reminders keep cash flowing.",
-  },
-  {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-      </svg>
-    ),
-    title: "Revenue Analytics",
-    desc: "Live charts on invoiced vs collected, aging buckets, and win rates — all in one view.",
-  },
-  {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-    title: "Client Management",
-    desc: "Centralise contacts, track payment history, and manage estimates per client.",
-  },
-  {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
-    title: "Enterprise Security",
-    desc: "Role-based access, audit logs, and SOC 2 compliant infrastructure built in.",
-  },
-  {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="3" y="3" width="7" height="7" rx="1" />
-        <rect x="14" y="3" width="7" height="7" rx="1" />
-        <rect x="3" y="14" width="7" height="7" rx="1" />
-        <rect x="14" y="14" width="7" height="7" rx="1" />
-      </svg>
-    ),
-    title: "Estimate Pipeline",
-    desc: "Move estimates from draft to signed with a visual kanban-style pipeline.",
-  },
-  {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
-    title: "Automated Reminders",
-    desc: "Schedule payment reminders by due date, overdue days, or custom triggers.",
-  },
+const capabilities = [
+  ["01", "Invoice with intention", "Build polished invoices, estimates, and payment journeys that move from draft to paid without friction."],
+  ["02", "See the signal", "Turn every receivable into a clear operating picture with live cash flow, aging, and collection intelligence."],
+  ["03", "Move as one team", "Give sales, finance, and leadership one trusted workspace with permissions and audit trails built in."],
 ];
 
-const stats = [
-  { value: "12,000+", label: "Businesses" },
-  { value: "$2.4B", label: "Invoiced annually" },
-  { value: "98.6%", label: "Collection rate" },
-  { value: "4 min", label: "Avg. setup time" },
+const features = [
+  { title: "Invoice operations", text: "Create, send, and follow up in seconds.", icon: "↗" },
+  { title: "Revenue intelligence", text: "Know what is coming in before it lands.", icon: "◒" },
+  { title: "Client command", text: "Every relationship, payment, and promise in context.", icon: "◎" },
+  { title: "Controls at scale", text: "Roles, approvals, and audit-ready history.", icon: "◇" },
 ];
+
+function Logo() {
+  return (
+    <Link href="/" className="flex items-center gap-2.5">
+      <span className="flex size-8 items-center justify-center rounded-lg bg-accent text-xs font-bold text-accent-foreground shadow-sm">L</span>
+      <span className="text-sm font-bold tracking-tight">Ledgerline</span>
+    </Link>
+  );
+}
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-full flex-col bg-background">
-      {/* Nav */}
-      <header className="sticky top-0 z-20 border-b border-border bg-surface/80 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-300 items-center justify-between px-6">
-          <div className="flex items-center gap-2.5">
-            <div className="flex size-7 items-center justify-center rounded-lg bg-accent text-[11px] font-bold text-accent-foreground shadow-sm">
-              L
-            </div>
-            <span className="text-sm font-semibold tracking-tight">
-              Ledgerline
-            </span>
-          </div>
-          <nav className="hidden items-center gap-6 text-[13px] font-medium text-muted md:flex">
-            <a
-              href="#features"
-              className="hover:text-foreground transition-colors"
-            >
-              Features
-            </a>
-            <a
-              href="#stats"
-              className="hover:text-foreground transition-colors"
-            >
-              Why us
-            </a>
-            <a
-              href="#pricing"
-              className="hover:text-foreground transition-colors"
-            >
-              Pricing
-            </a>
+    <div className="overflow-hidden bg-background text-foreground">
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-[#071b3a]/90 text-white backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
+          <Logo />
+          <nav className="hidden items-center gap-8 text-xs font-medium text-white/65 md:flex">
+            <a href="#platform" className="transition hover:text-white">Platform</a>
+            <a href="#workflow" className="transition hover:text-white">How it works</a>
+            <a href="#customers" className="transition hover:text-white">Customers</a>
+            <a href="#pricing" className="transition hover:text-white">Pricing</a>
           </nav>
           <div className="flex items-center gap-2">
-            <Link
-              href="/login"
-              className="rounded-lg px-3.5 py-1.5 text-[13px] font-medium text-muted hover:bg-default hover:text-foreground transition-colors"
-            >
-              Sign in
-            </Link>
-            <Link
-              href="/register"
-              className="rounded-lg bg-accent px-3.5 py-1.5 text-[13px] font-semibold text-accent-foreground shadow-sm hover:opacity-90 transition-opacity"
-            >
-              Get started
-            </Link>
+            <Link href="/login" className="hidden rounded-lg px-3 py-2 text-xs font-medium text-white/70 transition hover:bg-white/10 hover:text-white sm:block">Sign in</Link>
+            <Link href="/register" className="rounded-lg bg-[#8fc9ff] px-4 py-2 text-xs font-bold text-[#071b3a] shadow-lg shadow-[#8fc9ff]/15 transition hover:bg-white">Start free</Link>
           </div>
         </div>
       </header>
 
-      <main className="flex flex-1 flex-col">
-        {/* Hero */}
-        <section className="mx-auto flex w-full max-w-300 flex-col items-center gap-6 px-6 pb-16 pt-20 text-center md:pt-28">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-[12px] font-medium text-muted shadow-sm">
-            <span className="size-1.5 rounded-full bg-success" />
-            Now with AI-powered payment predictions
-          </span>
-          <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-[56px] lg:leading-[1.1]">
-            The invoicing platform built for{" "}
-            <span className="text-accent">serious businesses</span>
-          </h1>
-          <p className="max-w-xl text-base text-muted md:text-lg">
-            Ledgerline gives finance teams a single place to invoice, collect,
-            and forecast — with the depth of enterprise software and the speed
-            of a startup tool.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/register"
-              className="rounded-lg bg-accent px-5 py-2.5 text-[14px] font-semibold text-accent-foreground shadow-sm hover:opacity-90 transition-opacity"
-            >
-              Start free — no credit card
-            </Link>
-            <Link
-              href="/login"
-              className="rounded-lg border border-border bg-surface px-5 py-2.5 text-[14px] font-medium text-foreground shadow-sm hover:bg-surface-secondary transition-colors"
-            >
-              Sign in to dashboard →
-            </Link>
-          </div>
-          <p className="text-[12px] text-muted">
-            Free 14-day trial · Cancel anytime · SOC 2 compliant
-          </p>
-        </section>
-
-        {/* Dashboard preview */}
-        <section className="mx-auto w-full max-w-275 px-6 pb-20">
-          <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-xl ring-1 ring-border/40">
-            {/* Fake browser chrome */}
-            <div className="flex items-center gap-1.5 border-b border-border bg-surface-secondary px-4 py-3">
-              <span className="size-2.5 rounded-full bg-danger/60" />
-              <span className="size-2.5 rounded-full bg-warning/60" />
-              <span className="size-2.5 rounded-full bg-success/60" />
-              <div className="mx-auto flex h-6 w-64 items-center justify-center rounded-md bg-surface px-3 text-[11px] text-muted ring-1 ring-border">
-                app.ledgerline.io/dashboard
+      <main>
+        <section className="relative isolate min-h-[720px] overflow-hidden bg-[#071b3a] text-white">
+          <Image src="/login-image-2.jpg" alt="City skyline at night" fill priority className="object-cover object-center opacity-40" sizes="100vw" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#071b3a_5%,rgba(7,27,58,0.88)_40%,rgba(7,27,58,0.28)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_38%,rgba(104,183,255,0.32),transparent_30%)]" />
+          <div className="relative mx-auto flex min-h-[720px] max-w-7xl flex-col justify-center px-6 py-24 lg:px-10">
+            <div className="max-w-3xl">
+              <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-medium text-white/75 backdrop-blur">
+                <span className="size-1.5 rounded-full bg-[#8fc9ff] shadow-[0_0_14px_#8fc9ff]" />
+                The operating system for revenue teams
+              </div>
+              <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-6xl lg:text-8xl">
+                Make every
+                <span className="block text-[#8fc9ff]">payment count.</span>
+              </h1>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/65 sm:text-lg">
+                Ledgerline gives ambitious businesses the clarity to invoice faster, collect confidently, and make decisions from one source of truth.
+              </p>
+              <div className="mt-9 flex flex-wrap items-center gap-3">
+                <Link href="/register" className="rounded-xl bg-[#8fc9ff] px-5 py-3 text-sm font-bold text-[#071b3a] shadow-xl shadow-black/20 transition hover:bg-white">Build your workspace <span className="ml-2">↗</span></Link>
+                <a href="#platform" className="rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/15">Explore the platform</a>
+              </div>
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[11px] text-white/50">
+                <span>14-day free trial</span><span>No credit card</span><span>SOC 2-ready controls</span>
               </div>
             </div>
-            {/* Mock dashboard content */}
-            <div className="p-5">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <div className="h-4 w-24 rounded bg-surface-tertiary" />
-                  <div className="mt-1.5 h-3 w-36 rounded bg-surface-tertiary/60" />
-                </div>
-                <div className="h-7 w-28 rounded-lg bg-surface-tertiary" />
-              </div>
-              <div className="mb-4 grid grid-cols-3 gap-3 md:grid-cols-6">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="rounded-xl border border-border bg-surface p-3 shadow-sm"
-                  >
-                    <div className="h-2.5 w-16 rounded bg-surface-tertiary" />
-                    <div className="mt-2 h-5 w-20 rounded bg-surface-tertiary" />
-                    <div className="mt-3 h-6 w-full rounded bg-surface-tertiary/50" />
-                  </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_220px]">
-                <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
-                  <div className="mb-3 h-3 w-32 rounded bg-surface-tertiary" />
-                  <div className="flex items-end gap-1.5 h-24">
-                    {[65, 80, 72, 88, 95, 90, 105, 112, 100, 118, 125, 128].map(
-                      (h, i) => (
-                        <div
-                          key={i}
-                          className="flex-1 flex flex-col justify-end gap-0.5"
-                        >
-                          <div
-                            className="rounded-sm"
-                            style={{
-                              height: `${(h / 128) * 80}%`,
-                              background:
-                                i === 11 ? "var(--accent)" : "var(--accent)",
-                              opacity: i === 11 ? 1 : 0.35,
-                            }}
-                          />
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </div>
-                <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">
-                  <div className="mb-3 h-3 w-28 rounded bg-surface-tertiary" />
-                  {["Draft", "Sent", "Viewed", "Negotiating"].map((s, i) => (
-                    <div key={s} className="mb-2.5">
-                      <div className="mb-1 flex justify-between">
-                        <div className="h-2.5 w-16 rounded bg-surface-tertiary" />
-                        <div className="h-2.5 w-10 rounded bg-surface-tertiary" />
-                      </div>
-                      <div className="h-1.5 w-full rounded-full bg-surface-tertiary overflow-hidden">
-                        <div
-                          className="h-full rounded-full"
-                          style={{
-                            width: `${[40, 70, 55, 35][i]}%`,
-                            background: [
-                              "var(--muted)",
-                              "var(--accent)",
-                              "var(--warning)",
-                              "var(--success)",
-                            ][i],
-                            opacity: 0.7,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="absolute bottom-8 right-6 hidden max-w-xs rounded-2xl border border-white/20 bg-[#0b2b5b]/75 p-4 shadow-2xl backdrop-blur-md lg:block">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">Your next decision</p>
+              <p className="mt-2 text-sm leading-5 text-white/85">“Collections are up 14%. Two accounts need attention today.”</p>
+              <div className="mt-3 flex items-center justify-between text-[10px]"><span className="text-white/45">Ledgerline signal</span><span className="text-[#8fc9ff]">Live now</span></div>
             </div>
           </div>
         </section>
 
-        {/* Stats */}
-        <section id="stats" className="border-y border-border bg-surface">
-          <div className="mx-auto grid max-w-300 grid-cols-2 divide-x divide-y divide-border md:grid-cols-4 md:divide-y-0">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="flex flex-col items-center gap-1 px-8 py-10"
-              >
-                <span className="text-3xl font-bold tracking-tight text-foreground">
-                  {s.value}
-                </span>
-                <span className="text-[13px] text-muted">{s.label}</span>
+        <section className="border-b border-border bg-surface">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 px-6 py-7 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted lg:px-10">
+            <span>Trusted by operators at</span><span className="text-sm tracking-tight text-foreground/60">Northstar</span><span className="text-sm tracking-tight text-foreground/60">Arc & Co.</span><span className="text-sm tracking-tight text-foreground/60">Summitworks</span><span className="text-sm tracking-tight text-foreground/60">Kinetic</span>
+          </div>
+        </section>
+
+        <section id="platform" className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+          <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">One calm command center</p>
+              <h2 className="mt-5 max-w-lg text-4xl font-semibold leading-tight tracking-tight md:text-5xl">The work behind the numbers, finally in view.</h2>
+            </div>
+            <p className="max-w-xl text-base leading-7 text-muted">Revenue operations should not feel like detective work. Ledgerline connects the daily actions that create cash with the signals leaders need to steer the business.</p>
+          </div>
+          <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature) => (
+              <div key={feature.title} className="group rounded-2xl border border-border bg-surface p-6 transition hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl">
+                <span className="flex size-10 items-center justify-center rounded-xl bg-accent/10 text-lg text-accent">{feature.icon}</span>
+                <h3 className="mt-8 text-sm font-bold">{feature.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{feature.text}</p>
+                <span className="mt-8 block text-xs font-semibold text-accent opacity-0 transition group-hover:opacity-100">Learn more ↗</span>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Features */}
-        <section id="features" className="mx-auto w-full max-w-300 px-6 py-20">
-          <div className="mb-12 text-center">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-              Everything your finance team needs
-            </h2>
-            <p className="mt-3 text-[15px] text-muted">
-              Built for teams that invoice at scale and can&apos;t afford gaps
-              in their receivables.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((f) => (
-              <div
-                key={f.title}
-                className="rounded-xl border border-border bg-surface p-5 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="mb-3 flex size-9 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                  {f.icon}
+        <section id="workflow" className="bg-[#071b3a] text-white">
+          <div className="mx-auto grid max-w-7xl gap-16 px-6 py-24 lg:grid-cols-[0.75fr_1.25fr] lg:px-10 lg:py-32">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8fc9ff]">Designed for momentum</p>
+              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight md:text-5xl">From first quote to final payment.</h2>
+              <p className="mt-6 max-w-md text-sm leading-6 text-white/55">A modern operating rhythm for teams who are done stitching together spreadsheets, inboxes, and disconnected tools.</p>
+              <Link href="/register" className="mt-8 inline-flex rounded-xl bg-white px-5 py-3 text-sm font-bold text-[#071b3a] transition hover:bg-[#8fc9ff]">Start your 14-day trial</Link>
+            </div>
+            <div className="divide-y divide-white/15 border-y border-white/15">
+              {capabilities.map(([number, title, text]) => (
+                <div key={number} className="grid gap-5 py-8 sm:grid-cols-[70px_0.8fr_1.2fr] sm:items-start">
+                  <span className="font-mono text-sm text-[#8fc9ff]">{number}</span>
+                  <h3 className="text-lg font-semibold">{title}</h3>
+                  <p className="text-sm leading-6 text-white/55">{text}</p>
                 </div>
-                <h3 className="mb-1.5 text-[14px] font-semibold">{f.title}</h3>
-                <p className="text-[13px] leading-relaxed text-muted">
-                  {f.desc}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="border-t border-border bg-surface">
-          <div className="mx-auto flex max-w-300 flex-col items-center gap-5 px-6 py-20 text-center">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-              Ready to get paid faster?
-            </h2>
-            <p className="max-w-md text-[15px] text-muted">
-              Join thousands of businesses that trust Ledgerline to run their
-              revenue operations.
-            </p>
-            <Link
-              href="/register"
-              className="rounded-lg bg-accent px-6 py-2.5 text-[14px] font-semibold text-accent-foreground shadow-sm hover:opacity-90 transition-opacity"
-            >
-              Create your free account
-            </Link>
+        <section id="customers" className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[1fr_0.8fr] lg:items-center lg:px-10 lg:py-32">
+          <div className="relative min-h-[400px] overflow-hidden rounded-[2rem] bg-[#0b2b5b]">
+            <Image src="/login-image.jpg" alt="City skyline viewed from above" fill className="object-cover object-center opacity-70" sizes="(min-width: 1024px) 55vw, 100vw" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#071b3a] via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/20 bg-[#071b3a]/75 p-5 text-white backdrop-blur-md">
+              <p className="text-3xl font-semibold">98.6%</p><p className="mt-1 text-xs text-white/60">average collection rate across Ledgerline customers</p>
+            </div>
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Built for the long view</p>
+            <blockquote className="mt-6 text-3xl font-medium leading-tight tracking-tight md:text-4xl">“Ledgerline gave our team the confidence to grow without adding complexity.”</blockquote>
+            <div className="mt-8 flex items-center gap-3"><span className="flex size-10 items-center justify-center rounded-full bg-accent text-xs font-bold text-white">AR</span><div><p className="text-sm font-semibold">Amelia Rhodes</p><p className="text-xs text-muted">COO, Northstar Studio</p></div></div>
+          </div>
+        </section>
+
+        <section id="pricing" className="border-y border-border bg-surface-secondary">
+          <div className="mx-auto flex max-w-7xl flex-col items-center px-6 py-24 text-center lg:px-10 lg:py-28">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">A clearer way forward</p>
+            <h2 className="mt-5 max-w-2xl text-4xl font-semibold tracking-tight md:text-5xl">Your next best business decision starts here.</h2>
+            <p className="mt-5 max-w-lg text-sm leading-6 text-muted">Set up in minutes. Bring your team in when you are ready. Grow into the operating system your business deserves.</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3"><Link href="/register" className="rounded-xl bg-accent px-6 py-3 text-sm font-bold text-accent-foreground shadow-lg transition hover:opacity-90">Create your free workspace</Link><Link href="/login" className="rounded-xl border border-border bg-surface px-6 py-3 text-sm font-semibold transition hover:bg-background">I already have an account</Link></div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-surface-secondary">
-        <div className="mx-auto flex max-w-300 items-center justify-between px-6 py-5 text-[12px] text-muted">
-          <div className="flex items-center gap-2">
-            <div className="flex size-5 items-center justify-center rounded-md bg-accent text-[9px] font-bold text-accent-foreground">
-              L
-            </div>
-            <span>Ledgerline</span>
-          </div>
-          <span>&copy; 2026 Ledgerline Inc. All rights reserved.</span>
+      <footer className="bg-[#071b3a] text-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+          <div><Logo /><p className="mt-3 text-xs text-white/45">The operating system for revenue teams.</p></div>
+          <div className="flex flex-wrap gap-6 text-xs text-white/50"><a href="#platform" className="hover:text-white">Platform</a><a href="#workflow" className="hover:text-white">How it works</a><a href="#pricing" className="hover:text-white">Pricing</a><Link href="/login" className="hover:text-white">Sign in</Link></div>
+          <span className="text-xs text-white/35">© 2026 Ledgerline Inc.</span>
         </div>
       </footer>
     </div>
