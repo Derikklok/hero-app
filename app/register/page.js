@@ -80,7 +80,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-full flex-col bg-background">
+    <div className="auth-shell flex min-h-full flex-col bg-background">
       {/* Nav */}
       <header className="border-b border-border bg-surface/80 backdrop-blur-md">
         <div className="mx-auto flex h-14 max-w-300 items-center justify-between px-6">
@@ -130,8 +130,9 @@ export default function RegisterPage() {
           </div>
 
           {/* Card */}
-          <div className="rounded-2xl border border-border bg-surface p-8 shadow-sm">
+          <div className="auth-card rounded-2xl border border-border bg-surface p-8 shadow-sm">
             <div className="mb-6">
+              <span className="mb-3 inline-flex rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">Built for teams that move</span>
               <h1 className="text-xl font-bold tracking-tight">
                 Create your account
               </h1>
