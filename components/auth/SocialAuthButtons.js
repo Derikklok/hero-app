@@ -29,11 +29,11 @@ export default function SocialAuthButtons({ action = "continue" }) {
         or {actionLabel}
         <span className="h-px flex-1 bg-[#dce6f2]" />
       </div>
-      <div className="mt-4 grid grid-cols-2 gap-3">
+      <div className="mt-4 flex flex-wrap gap-2.5">
         <Button
           type="button"
           variant="secondary"
-          className="h-10 min-w-0 rounded-xl border border-[#d5e0ec] bg-white px-3 text-xs font-semibold text-[#071b3a] transition hover:border-accent hover:bg-[#f5f8fc]"
+          className="h-10 min-w-28 rounded-xl border border-[#d5e0ec] bg-white px-3 text-xs font-semibold text-[#071b3a] transition hover:border-accent hover:bg-[#f5f8fc] sm:min-w-31"
         >
           <GoogleIcon />
           <span>Google</span>
@@ -41,7 +41,7 @@ export default function SocialAuthButtons({ action = "continue" }) {
         <Button
           type="button"
           variant="secondary"
-          className="h-10 min-w-0 rounded-xl border border-[#d5e0ec] bg-white px-3 text-xs font-semibold text-[#071b3a] transition hover:border-accent hover:bg-[#f5f8fc]"
+          className="h-10 min-w-28 rounded-xl border border-[#d5e0ec] bg-white px-3 text-xs font-semibold text-[#071b3a] transition hover:border-accent hover:bg-[#f5f8fc] sm:min-w-31"
         >
           <GithubIcon />
           <span>GitHub</span>

@@ -17,38 +17,44 @@
 
 const styles = {
   blue: {
-    bg:     "var(--card-header-blue-bg)",
+    bg: "var(--card-header-blue-bg)",
     border: "var(--card-header-blue-border)",
-    text:   "var(--card-header-blue-text)",
+    text: "var(--card-header-blue-text)",
   },
   indigo: {
-    bg:     "var(--card-header-indigo-bg)",
+    bg: "var(--card-header-indigo-bg)",
     border: "var(--card-header-indigo-border)",
-    text:   "var(--card-header-indigo-text)",
+    text: "var(--card-header-indigo-text)",
   },
   teal: {
-    bg:     "var(--card-header-teal-bg)",
+    bg: "var(--card-header-teal-bg)",
     border: "var(--card-header-teal-border)",
-    text:   "var(--card-header-teal-text)",
+    text: "var(--card-header-teal-text)",
   },
   green: {
-    bg:     "var(--card-header-green-bg)",
+    bg: "var(--card-header-green-bg)",
     border: "var(--card-header-green-border)",
-    text:   "var(--card-header-green-text)",
+    text: "var(--card-header-green-text)",
   },
   amber: {
-    bg:     "var(--card-header-amber-bg)",
+    bg: "var(--card-header-amber-bg)",
     border: "var(--card-header-amber-border)",
-    text:   "var(--card-header-amber-text)",
+    text: "var(--card-header-amber-text)",
   },
   rose: {
-    bg:     "var(--card-header-rose-bg)",
+    bg: "var(--card-header-rose-bg)",
     border: "var(--card-header-rose-border)",
-    text:   "var(--card-header-rose-text)",
+    text: "var(--card-header-rose-text)",
   },
 };
 
-export default function CardHeader({ variant = "blue", title, description, right, className = "" }) {
+export default function CardHeader({
+  variant = "blue",
+  title,
+  description,
+  right,
+  className = "",
+}) {
   const s = styles[variant] ?? styles.blue;
   return (
     <div
@@ -56,9 +62,13 @@ export default function CardHeader({ variant = "blue", title, description, right
       style={{ background: s.bg, borderColor: s.border }}
     >
       <div>
-        <p className="text-sm font-semibold" style={{ color: s.text }}>{title}</p>
+        <p className="text-sm font-semibold" style={{ color: s.text }}>
+          {title}
+        </p>
         {description && (
-          <p className="mt-0.5 text-xs" style={{ color: s.text, opacity: 0.7 }}>{description}</p>
+          <p className="mt-0.5 text-xs" style={{ color: s.text, opacity: 0.7 }}>
+            {description}
+          </p>
         )}
       </div>
       {right && <div className="flex items-center gap-2">{right}</div>}

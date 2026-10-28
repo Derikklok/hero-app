@@ -18,9 +18,21 @@ const COLUMNS = [
 ];
 
 const SortIcon = ({ active, dir }) => (
-  <svg width="8" height="10" viewBox="0 0 8 10" fill="currentColor" className={active ? "opacity-100" : "opacity-30"}>
-    <path d="M4 0 L7 4 L1 4 Z" opacity={active && dir === "asc" ? "1" : "0.4"} />
-    <path d="M4 10 L7 6 L1 6 Z" opacity={active && dir === "desc" ? "1" : "0.4"} />
+  <svg
+    width="8"
+    height="10"
+    viewBox="0 0 8 10"
+    fill="currentColor"
+    className={active ? "opacity-100" : "opacity-30"}
+  >
+    <path
+      d="M4 0 L7 4 L1 4 Z"
+      opacity={active && dir === "asc" ? "1" : "0.4"}
+    />
+    <path
+      d="M4 10 L7 6 L1 6 Z"
+      opacity={active && dir === "desc" ? "1" : "0.4"}
+    />
   </svg>
 );
 
@@ -35,11 +47,18 @@ export default function InvoiceTable() {
     const list = invoices
       .map((r) => ({ ...r, balance: r.amount - r.paid }))
       .filter((r) => (filter === "All" ? true : r.status === filter))
-      .filter((r) => !q || r.client.toLowerCase().includes(q) || r.id.toLowerCase().includes(q));
+      .filter(
+        (r) =>
+          !q ||
+          r.client.toLowerCase().includes(q) ||
+          r.id.toLowerCase().includes(q),
+      );
     const { key, dir } = sort;
     list.sort((a, b) => {
-      const av = a[key], bv = b[key];
-      const cmp = typeof av === "number" ? av - bv : String(av).localeCompare(String(bv));
+      const av = a[key],
+        bv = b[key];
+      const cmp =
+        typeof av === "number" ? av - bv : String(av).localeCompare(String(bv));
       return dir === "asc" ? cmp : -cmp;
     });
     return list;
@@ -50,7 +69,11 @@ export default function InvoiceTable() {
   const allSelected = rows.length > 0 && rows.every((r) => selected.has(r.id));
 
   const toggleSort = (key) =>
-    setSort((s) => (s.key === key ? { key, dir: s.dir === "asc" ? "desc" : "asc" } : { key, dir: "asc" }));
+    setSort((s) =>
+      s.key === key
+        ? { key, dir: s.dir === "asc" ? "desc" : "asc" }
+        : { key, dir: "asc" },
+    );
 
   const toggleRow = (id) =>
     setSelected((prev) => {
@@ -73,11 +96,17 @@ export default function InvoiceTable() {
         right={
           <div className="flex flex-wrap items-center gap-2">
             {overdueCount > 0 && (
-              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: "rgba(255,255,255,0.2)", color: "#fff" }}>
+              <span
+                className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                style={{ background: "rgba(255,255,255,0.2)", color: "#fff" }}
+              >
                 {overdueCount} overdue
               </span>
             )}
-            <div className="flex rounded-lg p-0.5 gap-0.5" style={{ background: "rgba(0,0,0,0.25)" }}>
+            <div
+              className="flex rounded-lg p-0.5 gap-0.5"
+              style={{ background: "rgba(0,0,0,0.25)" }}
+            >
               {FILTERS.map((f) => (
                 <button
                   key={f}
@@ -85,7 +114,10 @@ export default function InvoiceTable() {
                   className="rounded-md px-2.5 py-1 text-[12px] font-medium transition-colors"
                   style={
                     filter === f
-                      ? { background: "rgba(255,255,255,0.95)", color: "var(--card-header-rose-bg)" }
+                      ? {
+                          background: "rgba(255,255,255,0.95)",
+                          color: "var(--card-header-rose-bg)",
+                        }
                       : { color: "rgba(255,255,255,0.75)" }
                   }
                 >
@@ -94,15 +126,32 @@ export default function InvoiceTable() {
               ))}
             </div>
             <div className="relative flex items-center">
-              <svg className="pointer-events-none absolute left-2.5" style={{ color: "rgba(255,255,255,0.6)" }} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+              <svg
+                className="pointer-events-none absolute left-2.5"
+                style={{ color: "rgba(255,255,255,0.6)" }}
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
               </svg>
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search client or number…"
                 className="invoice-search h-8 w-52 rounded-lg pl-8 pr-3 text-[12px] outline-none transition"
-                style={{ background: "rgba(0,0,0,0.25)", color: "#fff", caretColor: "#fff", border: "1px solid rgba(255,255,255,0.25)" }}
+                style={{
+                  background: "rgba(0,0,0,0.25)",
+                  color: "#fff",
+                  caretColor: "#fff",
+                  border: "1px solid rgba(255,255,255,0.25)",
+                }}
               />
             </div>
           </div>
@@ -112,12 +161,23 @@ export default function InvoiceTable() {
       {/* Bulk action bar */}
       {selected.size > 0 && (
         <div className="flex items-center gap-2 border-b border-border bg-accent/8 px-4 py-2 text-xs">
-          <span className="font-semibold text-accent">{selected.size} selected</span>
+          <span className="font-semibold text-accent">
+            {selected.size} selected
+          </span>
           <div className="mx-2 h-3.5 w-px bg-border" />
-          <Button size="sm" variant="secondary" className="h-6 px-2.5 text-xs">Send reminder</Button>
-          <Button size="sm" variant="secondary" className="h-6 px-2.5 text-xs">Mark paid</Button>
-          <Button size="sm" variant="secondary" className="h-6 px-2.5 text-xs">Export</Button>
-          <button onClick={() => setSelected(new Set())} className="ml-auto text-muted hover:text-foreground transition-colors">
+          <Button size="sm" variant="secondary" className="h-6 px-2.5 text-xs">
+            Send reminder
+          </Button>
+          <Button size="sm" variant="secondary" className="h-6 px-2.5 text-xs">
+            Mark paid
+          </Button>
+          <Button size="sm" variant="secondary" className="h-6 px-2.5 text-xs">
+            Export
+          </Button>
+          <button
+            onClick={() => setSelected(new Set())}
+            className="ml-auto text-muted hover:text-foreground transition-colors"
+          >
             ✕ Clear
           </button>
         </div>
@@ -169,21 +229,39 @@ export default function InvoiceTable() {
                     className="rounded"
                   />
                 </td>
-                <td className="px-3 py-2.5 font-semibold text-accent">{r.id}</td>
-                <td className="max-w-45 truncate px-3 py-2.5 font-medium">{r.client}</td>
-                <td className="hidden px-3 py-2.5 text-muted xl:table-cell">{r.issued}</td>
-                <td className={`px-3 py-2.5 ${r.status === "Overdue" ? "font-medium text-danger" : "text-muted"}`}>
+                <td className="px-3 py-2.5 font-semibold text-accent">
+                  {r.id}
+                </td>
+                <td className="max-w-45 truncate px-3 py-2.5 font-medium">
+                  {r.client}
+                </td>
+                <td className="hidden px-3 py-2.5 text-muted xl:table-cell">
+                  {r.issued}
+                </td>
+                <td
+                  className={`px-3 py-2.5 ${r.status === "Overdue" ? "font-medium text-danger" : "text-muted"}`}
+                >
                   {r.due}
                 </td>
-                <td className="px-3 py-2.5 text-right font-medium">{money(r.amount)}</td>
-                <td className={`px-3 py-2.5 text-right ${r.balance === 0 ? "text-muted" : "font-semibold"}`}>
+                <td className="px-3 py-2.5 text-right font-medium">
+                  {money(r.amount)}
+                </td>
+                <td
+                  className={`px-3 py-2.5 text-right ${r.balance === 0 ? "text-muted" : "font-semibold"}`}
+                >
                   {r.balance === 0 ? "—" : money(r.balance)}
                 </td>
                 <td className="px-3 py-2.5">
-                  <Chip size="sm" variant="soft" color={statusColor[r.status]}>{r.status}</Chip>
+                  <Chip size="sm" variant="soft" color={statusColor[r.status]}>
+                    {r.status}
+                  </Chip>
                 </td>
                 <td className="px-3 py-2.5 text-right">
-                  <Button size="sm" variant="ghost" className="h-6 px-2.5 text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-6 px-2.5 text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
                     Open ↗
                   </Button>
                 </td>
@@ -191,7 +269,10 @@ export default function InvoiceTable() {
             ))}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={9} className="py-12 text-center text-sm text-muted">
+                <td
+                  colSpan={9}
+                  className="py-12 text-center text-sm text-muted"
+                >
                   No invoices match your filter.
                 </td>
               </tr>
@@ -199,9 +280,13 @@ export default function InvoiceTable() {
           </tbody>
           <tfoot className="border-t-2 border-border bg-surface-secondary text-[12px] font-semibold">
             <tr>
-              <td colSpan={5} className="py-2.5 pl-4 text-muted">{rows.length} invoice{rows.length !== 1 ? "s" : ""}</td>
+              <td colSpan={5} className="py-2.5 pl-4 text-muted">
+                {rows.length} invoice{rows.length !== 1 ? "s" : ""}
+              </td>
               <td className="px-3 py-2.5 text-right">{money(total)}</td>
-              <td className="px-3 py-2.5 text-right text-warning">{money(balance)}</td>
+              <td className="px-3 py-2.5 text-right text-warning">
+                {money(balance)}
+              </td>
               <td colSpan={2} />
             </tr>
           </tfoot>

@@ -5,7 +5,8 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata = {
   title: "Ledgerline — Revenue operations, clearly",
-  description: "Invoice faster, collect confidently, and run revenue operations from one calm workspace.",
+  description:
+    "Invoice faster, collect confidently, and run revenue operations from one calm workspace.",
 };
 
 export default function RootLayout({ children }) {
