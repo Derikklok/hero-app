@@ -65,6 +65,35 @@
   --radius: 0.5rem;
   --field-radius: 0.5rem;
   --font-sans: var(--font-inter);
+
+  /* ── Card header variants ──────────────────────────────────────────────
+   * Each dashboard widget gets its own tinted header.
+   * Add new variants here — components consume them via the CardHeader
+   * component's `variant` prop so the palette stays in one place.
+   * ------------------------------------------------------------------- */
+  --card-header-blue-bg:    oklch(95% 0.04 258);
+  --card-header-blue-border: oklch(86% 0.06 258);
+  --card-header-blue-text:  oklch(38% 0.14 258);
+
+  --card-header-indigo-bg:    oklch(94% 0.04 280);
+  --card-header-indigo-border: oklch(85% 0.07 280);
+  --card-header-indigo-text:  oklch(36% 0.15 280);
+
+  --card-header-teal-bg:    oklch(94% 0.04 185);
+  --card-header-teal-border: oklch(84% 0.07 185);
+  --card-header-teal-text:  oklch(36% 0.13 185);
+
+  --card-header-green-bg:    oklch(94% 0.04 152);
+  --card-header-green-border: oklch(84% 0.07 152);
+  --card-header-green-text:  oklch(34% 0.13 152);
+
+  --card-header-amber-bg:    oklch(95% 0.05 80);
+  --card-header-amber-border: oklch(86% 0.09 80);
+  --card-header-amber-text:  oklch(38% 0.12 72);
+
+  --card-header-rose-bg:    oklch(95% 0.04 15);
+  --card-header-rose-border: oklch(86% 0.07 15);
+  --card-header-rose-text:  oklch(40% 0.14 15);
 }
 
 .dark,
@@ -101,6 +130,31 @@
   --surface-tertiary-foreground: oklch(96% 0 0);
   --warning: oklch(74% 0.15 76);
   --warning-foreground: oklch(18% 0.006 76);
+
+  /* Card header variants — dark mode */
+  --card-header-blue-bg:    oklch(22% 0.06 258);
+  --card-header-blue-border: oklch(30% 0.08 258);
+  --card-header-blue-text:  oklch(72% 0.12 258);
+
+  --card-header-indigo-bg:    oklch(21% 0.06 280);
+  --card-header-indigo-border: oklch(29% 0.09 280);
+  --card-header-indigo-text:  oklch(70% 0.13 280);
+
+  --card-header-teal-bg:    oklch(21% 0.05 185);
+  --card-header-teal-border: oklch(29% 0.08 185);
+  --card-header-teal-text:  oklch(68% 0.11 185);
+
+  --card-header-green-bg:    oklch(21% 0.05 152);
+  --card-header-green-border: oklch(29% 0.08 152);
+  --card-header-green-text:  oklch(66% 0.11 152);
+
+  --card-header-amber-bg:    oklch(22% 0.06 80);
+  --card-header-amber-border: oklch(30% 0.09 80);
+  --card-header-amber-text:  oklch(72% 0.12 72);
+
+  --card-header-rose-bg:    oklch(22% 0.05 15);
+  --card-header-rose-border: oklch(30% 0.08 15);
+  --card-header-rose-text:  oklch(70% 0.12 15);
 }
 
 * {

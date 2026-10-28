@@ -16,10 +16,10 @@ export default function DocumentBuilder({ type }) {
   const isInvoice = type === "invoice";
   const previewRef = useRef(null);
 
-  const today = new Date().toISOString().slice(0, 10);
-  const defaultDue = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10);
-
-  const [doc, setDoc] = useState({
+  const [doc, setDoc] = useState(() => {
+    const today = new Date().toISOString().slice(0, 10);
+    const defaultDue = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10);
+    return {
     number: isInvoice ? "INV-2042" : "EST-519",
     issueDate: today,
     dueDate: defaultDue,
@@ -46,6 +46,7 @@ export default function DocumentBuilder({ type }) {
     // Branding
     logo: null,
     accentColor: "#4f46e5",
+    };
   });
 
   const set = (k) => (e) => setDoc((d) => ({ ...d, [k]: e.target.value }));
@@ -215,7 +216,7 @@ export default function DocumentBuilder({ type }) {
                     <input type="file" accept="image/*" className="hidden" onChange={handleLogo} />
                   </label>
                 </div>
-                {doc.logo && <img src={doc.logo} alt="Logo" className="h-10 w-auto object-contain rounded" />}
+                {doc.logo && <img src={doc.logo} alt="Logo" className="h-10 w-auto object-contain rounded" />} {/* eslint-disable-line @next/next/no-img-element */}
                 <input value={doc.fromName} onChange={set("fromName")} placeholder="Company name" className={input()} />
                 <input value={doc.fromEmail} onChange={set("fromEmail")} placeholder="Email" className={input()} />
                 <input value={doc.fromPhone} onChange={set("fromPhone")} placeholder="Phone" className={input()} />

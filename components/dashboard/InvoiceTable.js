@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Button, Card, Chip } from "@heroui/react";
 import { invoices, money, statusColor } from "./data";
+import CardHeader from "@/components/ui/CardHeader";
 
 const FILTERS = ["All", "Overdue", "Sent", "Partial", "Paid", "Draft"];
 
@@ -66,44 +67,45 @@ export default function InvoiceTable() {
   return (
     <Card className="gap-0 p-0 ring-1 ring-border/60 shadow-sm overflow-hidden">
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
-        <div className="flex items-center gap-3">
-          <Card.Title className="text-sm font-semibold">Invoices</Card.Title>
-          {overdueCount > 0 && (
-            <span className="rounded-full bg-danger/15 px-2 py-0.5 text-[10px] font-semibold text-danger">
-              {overdueCount} overdue
-            </span>
-          )}
-        </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="flex rounded-lg border border-border bg-surface-secondary p-0.5 gap-0.5">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`rounded-md px-2.5 py-1 text-[12px] font-medium transition-colors ${
-                  filter === f
-                    ? "bg-surface text-foreground shadow-sm"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
+      <CardHeader
+        variant="rose"
+        title="Invoices"
+        right={
+          <div className="flex flex-wrap items-center gap-2">
+            {overdueCount > 0 && (
+              <span className="rounded-full bg-danger/15 px-2 py-0.5 text-[10px] font-semibold text-danger">
+                {overdueCount} overdue
+              </span>
+            )}
+            <div className="flex rounded-lg border border-border bg-surface-secondary p-0.5 gap-0.5">
+              {FILTERS.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f)}
+                  className={`rounded-md px-2.5 py-1 text-[12px] font-medium transition-colors ${
+                    filter === f
+                      ? "bg-surface text-foreground shadow-sm"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+            <div className="relative flex items-center">
+              <svg className="pointer-events-none absolute left-2.5 text-muted" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+              </svg>
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search client or number…"
+                className="h-8 w-52 rounded-lg bg-field-background pl-8 pr-3 text-[12px] outline-none ring-1 ring-field-border placeholder:text-field-placeholder focus:ring-2 focus:ring-focus transition"
+              />
+            </div>
           </div>
-          <div className="relative flex items-center">
-            <svg className="pointer-events-none absolute left-2.5 text-muted" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-            </svg>
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search client or number…"
-              className="h-8 w-52 rounded-lg bg-field-background pl-8 pr-3 text-[12px] outline-none ring-1 ring-field-border placeholder:text-field-placeholder focus:ring-2 focus:ring-focus transition"
-            />
-          </div>
-        </div>
-      </div>
+        }
+      />
 
       {/* Bulk action bar */}
       {selected.size > 0 && (

@@ -1,5 +1,6 @@
 import { Card } from "@heroui/react";
 import { activity, aging, money, pipeline } from "./data";
+import CardHeader from "@/components/ui/CardHeader";
 
 function ProgressBar({ pct, color = "var(--accent)", bg = "var(--default)" }) {
   return (
@@ -21,12 +22,15 @@ export function EstimatePipeline() {
   const total = pipeline.reduce((s, p) => s + p.value, 0);
   return (
     <Card className="gap-0 p-0 ring-1 ring-border/60 shadow-sm overflow-hidden">
-      <div className="flex items-center justify-between border-b border-border px-4 py-3">
-        <Card.Title className="text-sm font-semibold">Estimate Pipeline</Card.Title>
-        <span className="rounded-full bg-surface-secondary px-2.5 py-0.5 text-[11px] font-semibold tabular-nums text-muted">
-          {money(total, true)}
-        </span>
-      </div>
+      <CardHeader
+        variant="teal"
+        title="Estimate Pipeline"
+        right={
+          <span className="rounded-full bg-white/40 px-2.5 py-0.5 text-[11px] font-semibold tabular-nums" style={{ color: "var(--card-header-teal-text)" }}>
+            {money(total, true)}
+          </span>
+        }
+      />
       <ul className="flex flex-col divide-y divide-separator">
         {pipeline.map((p) => (
           <li key={p.stage} className="flex flex-col gap-2 px-4 py-3">
@@ -52,12 +56,15 @@ export function ReceivablesAging() {
   const total = aging.reduce((s, a) => s + a.value, 0);
   return (
     <Card className="gap-0 p-0 ring-1 ring-border/60 shadow-sm overflow-hidden">
-      <div className="flex items-center justify-between border-b border-border px-4 py-3">
-        <Card.Title className="text-sm font-semibold">Receivables Aging</Card.Title>
-        <span className="rounded-full bg-surface-secondary px-2.5 py-0.5 text-[11px] font-semibold tabular-nums text-muted">
-          {money(total, true)}
-        </span>
-      </div>
+      <CardHeader
+        variant="green"
+        title="Receivables Aging"
+        right={
+          <span className="rounded-full bg-white/40 px-2.5 py-0.5 text-[11px] font-semibold tabular-nums" style={{ color: "var(--card-header-green-text)" }}>
+            {money(total, true)}
+          </span>
+        }
+      />
       <div className="px-4 pt-3 pb-1">
         <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-default gap-0.5">
           {aging.map((a, i) => (
@@ -104,10 +111,15 @@ const toneBg = {
 export function ActivityFeed() {
   return (
     <Card className="gap-0 p-0 ring-1 ring-border/60 shadow-sm overflow-hidden">
-      <div className="flex items-center justify-between border-b border-border px-4 py-3">
-        <Card.Title className="text-sm font-semibold">Recent Activity</Card.Title>
-        <button className="text-[11px] font-medium text-accent hover:underline">View all</button>
-      </div>
+      <CardHeader
+        variant="blue"
+        title="Recent Activity"
+        right={
+          <button className="text-[11px] font-medium hover:underline" style={{ color: "var(--card-header-blue-text)" }}>
+            View all
+          </button>
+        }
+      />
       <ul className="flex flex-col">
         {activity.map((a, i) => (
           <li key={i} className="flex items-start gap-3 border-b border-separator px-4 py-3 last:border-b-0 hover:bg-surface-secondary transition-colors">
