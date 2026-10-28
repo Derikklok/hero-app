@@ -78,9 +78,21 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="clients" className="overflow-hidden border-b border-[#dce6f2] bg-white py-8">
-          <p className="text-center text-[10px] font-bold uppercase tracking-[0.22em] text-[#60738d]">Powering the teams behind better businesses</p>
-          <div className="logo-marquee mt-6"><div className="logo-marquee-track">{[...clients, ...clients].map((client, index) => <span key={`${client}-${index}`} className="whitespace-nowrap text-lg font-semibold tracking-tight text-[#6b7d96]">{client}</span>)}</div></div>
+        <section id="clients" className="overflow-hidden border-b border-[#dce6f2] bg-white py-12">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#60738d]">Powering the teams behind better businesses</p>
+              <span className="text-[10px] text-[#90a0b4]">Trusted by 1,500+ operators</span>
+            </div>
+          </div>
+          <div className="relative mt-7 overflow-hidden before:absolute before:inset-y-0 before:left-0 before:z-10 before:w-24 before:bg-linear-to-r before:from-white before:to-transparent after:absolute after:inset-y-0 after:right-0 after:z-10 after:w-24 after:bg-linear-to-l after:from-white after:to-transparent">
+            <div className="flex w-max animate-[partners-left_32s_linear_infinite] gap-3 pr-3 hover:[animation-play-state:paused]">
+              {[...clients, ...clients].map((client, index) => <div key={`${client}-a-${index}`} className="flex h-14 shrink-0 items-center gap-3 rounded-xl border border-[#dce6f2] bg-[#f8fbff] px-5 text-sm font-bold tracking-tight text-[#536b88] shadow-sm"><span className="flex size-7 items-center justify-center rounded-lg bg-[#e6f2ff] text-[10px] font-bold text-[#2467ae]">{client.charAt(0)}</span>{client}</div>)}
+            </div>
+            <div className="mt-3 flex w-max animate-[partners-right_38s_linear_infinite] gap-3 pr-3 hover:[animation-play-state:paused]">
+              {[...clients.slice().reverse(), ...clients.slice().reverse()].map((client, index) => <div key={`${client}-b-${index}`} className="flex h-11 shrink-0 items-center gap-2 rounded-full border border-[#e5edf5] bg-white px-5 text-xs font-semibold text-[#8192a8]"><span className="size-2 rounded-full bg-[#8fc9ff]" />{client}<span className="text-[10px] text-[#b1bdcc]">/ finance</span></div>)}
+            </div>
+          </div>
         </section>
 
         <section id="platform" className="mx-auto max-w-6xl px-6 py-24 lg:py-32">
