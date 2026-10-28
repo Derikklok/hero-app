@@ -5,6 +5,7 @@ const nextConfig = {
     agentFeedback: true,
   },
   turbopack: {
+    root: import.meta.dirname,
     rules: {
       "*.css": {
         loaders: ["@tailwindcss/turbopack"],
